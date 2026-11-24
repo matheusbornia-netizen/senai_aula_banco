@@ -1,0 +1,96 @@
+/* unidade senai */
+INSERT INTO unidade_senai (nome_unidade, cidade) VALUES
+('SENAI Toledo', 'Toledo'),
+('SENAI Guarapuava', 'Guarapuava'),
+('SENAI Pato Branco', 'Pato Branco');
+
+/* LINHAS DE PRODUCAO */
+INSERT INTO linhas_producao (id_unidade, nome_linha) VALUES
+(1, 'Linha de Montagem Automotiva'),
+(1, 'Linha de Pintura Eletrostatica'),
+(2, 'Linha de Torneamento'),
+(2, 'Linha de Dobra e Corte'),
+(3, 'Linha de Tratamento Termico');
+
+/* Tipos de Maquina */
+INSERT INTO TIPOS_MAQUINA (nome_tipo, horas_revisao_padrao) VALUES
+('Torno Vertical', 480),
+('Prensa Dobradeira', 380),
+('Forno de Tempera', 1000),
+('Robo Pintor', 850),
+('Esteira Transportadora', 900),
+('Guilhotina Hidraulica', 420);
+
+/* maquinas senai */
+INSERT INTO MAQUINAS_SENAI
+(id_linha, id_tipo, tag_patrimonio, data_aquisicao, status_operacao) VALUES
+(1, 5, 'TAG-201', '2021-02-18', 'Operando'),
+(2, 4, 'TAG-202', '2023-08-02', 'Operando'),
+(3, 1, 'TAG-203', '2019-06-25', 'Operando'),
+(3, 1, 'TAG-204', '2022-04-08', 'Manutencao'),
+(4, 2, 'TAG-205', '2020-10-14', 'Operando'),
+(4, 6, 'TAG-206', '2017-12-01', 'Parada'),
+(5, 3, 'TAG-207', '2024-03-19', 'Operando');
+
+/* TECNICOS */
+INSERT INTO tecnicos (nome_tecnico, especialidade, nivel_certificado) VALUES
+('Eduardo Barros', 'Mecanica', 'Especialista'),
+('Fernanda Lopes', 'Eletrica', 'Avancado'),
+('Ricardo Tavares', 'Hidraulica', 'Intermediario'),
+('Patricia Gomes', 'Automacao', 'Avancado');
+
+/* ordens de servico */
+INSERT INTO ordens_servico
+(id_maquina, id_tecnico, data_abertura, tipo_manutencao, status_os) VALUES
+(1, 2, '2026-09-30 06:50:00', 'Preventiva', 'Concluida'),
+(4, 1, '2026-10-04 10:30:00', 'Corretiva', 'Em andamento'),
+(6, 3, '2026-10-13 14:15:00', 'Corretiva', 'Aberta'),
+(7, 4, '2026-10-21 09:00:00', 'Preditiva', 'Concluida'),
+(2, 4, '2026-10-29 16:40:00', 'Preventiva', 'Concluida'),
+(3, 1, '2026-11-07 08:20:00', 'Preditiva', 'Aberta'),
+(5, 3, '2026-11-14 13:00:00', 'Preventiva', 'Em andamento');
+
+/* ESTOQUE DE PECAS */
+INSERT INTO estoque_pecas
+(codigo_part_number, descricao, qtd_estoque, preco_unitario) VALUES
+('TRM-410', 'Termopar tipo K', 28, 142.60),
+('BMB-411', 'Bomba hidraulica de palhetas', 5, 2180.00),
+('LMN-412', 'Lamina de guilhotina', 10, 365.00),
+('INV-413', 'Inversor de frequencia', 8, 1390.50),
+('FLT-414', 'Filtro de ar da cabine', 46, 54.20),
+('RLM-415', 'Rolamento conico', 36, 101.75);
+
+/* Componentes das Maquinas */
+INSERT INTO componentes_maq
+(id_maquina, nome_componente, horas_uso_acumulado, limite_hora_alerta) VALUES
+(1, 'Motor da esteira', 730, 900),
+(2, 'Filtro da cabine', 380, 850),
+(3, 'Eixo-arvore', 410, 480),
+(4, 'Rolamento conico', 470, 480),
+(5, 'Cilindro hidraulico', 365, 380),
+(6, 'Lamina de corte', 405, 420),
+(7, 'Resistencia do forno', 960, 1000),
+(7, 'Termopar da camara', 610, 1000);
+
+/* historico sensores */
+INSERT INTO historico_sensores
+(id_ordem, temperatura_medida, vibracao_mm_s, data_hora_leitura) VALUES
+(1, 59.80, 2.00, '2026-09-30 07:25:00'),
+(2, 87.60, 7.30, '2026-10-04 11:05:00'),
+(2, 90.40, 7.90, '2026-10-04 12:30:00'),
+(3, 79.20, 6.10, '2026-10-13 14:50:00'),
+(4, 642.50, 1.40, '2026-10-21 09:40:00'),
+(5, 54.30, 1.90, '2026-10-29 17:15:00'),
+(6, 73.10, 4.20, '2026-11-07 09:00:00'),
+(7, 76.50, 5.00, '2026-11-14 13:40:00');
+
+/* Pecas OS */
+INSERT INTO pecas_os
+(id_ordem, id_pecas, qtd_estoque, preco_aplicado) VALUES
+(1, 4, 1, 1390.50),
+(2, 6, 2, 101.75),
+(3, 3, 1, 365.00),
+(4, 1, 2, 142.60),
+(5, 5, 1, 54.20),
+(6, 6, 1, 101.75),
+(7, 2, 1, 2180.00);
